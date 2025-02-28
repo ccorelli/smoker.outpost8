@@ -1,6 +1,7 @@
 import requests
 import json
 import pi_smoker_secrets
+from datetime import datetime, timezone
 
 def post_request(url, payload):
     headers = {
@@ -27,7 +28,7 @@ def post_request(url, payload):
         return None
 
 payload = {
-    "local_time": "2025-02-01",
+    "local_time": datetime.now(timezone.utc).isoformat(),
     "mode": "off",
     "setpoint": 30,
     "hysteresis": 5, 
